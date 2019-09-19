@@ -15,7 +15,7 @@ SECTION MBR vstart=0x7c00
   read_loader_codes:
    mov eax,LOADER_START_SECTOR	
    mov bx,LOADER_BASE_ADDR       
-   mov cx,1		; read one sector from disk
+   mov cx,4		; read 4 sectors from disk
 
    mov esi,eax	 
    mov di,cx		  
