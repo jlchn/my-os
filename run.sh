@@ -1,0 +1,2 @@
+
+bochs -q -f bochsrc
