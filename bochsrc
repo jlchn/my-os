@@ -6,7 +6,7 @@ romimage: file=/usr/local/share/bochs/BIOS-bochs-latest
 vgaromimage: file=/usr/local/share/bochs/VGABIOS-lgpl-latest
 
 boot: disk
-log: log.bochsrc.disk
+log: bochsrc.log
 
 mouse: enabled=0
 keyboard: keymap=/usr/local/share/bochs/keymaps/sdl2-pc-us.map
