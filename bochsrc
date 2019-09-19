@@ -12,5 +12,5 @@ log: bochsrc.log
 
 mouse: enabled=0
 keyboard: keymap=/usr/local/share/bochs/keymaps/sdl2-pc-us.map
-
-ata0-master: type=disk, path="hd60.img", mode=flat
+ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=disk, path="boot/hd60.img", mode=flat
