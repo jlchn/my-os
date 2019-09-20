@@ -1,4 +1,5 @@
 bochsrc.log
+build/*
 *.bin
 *.lock
 *.o

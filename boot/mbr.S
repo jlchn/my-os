@@ -1,4 +1,4 @@
-%include "include/const.inc"
+%include "const.inc"
 
 SECTION MBR vstart=0x7c00       
    mov sp,0x7c00   
