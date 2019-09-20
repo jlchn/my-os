@@ -1,3 +1,4 @@
 bochsrc.log
 *.bin
 *.lock
+*.o
