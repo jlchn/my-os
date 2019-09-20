@@ -7,6 +7,13 @@ SECTION MBR vstart=0x7c00
    mov es,ax
    mov ss,ax
    mov fs,ax
+
+   ; clear screen
+   mov     ax, 0600h
+   mov     bx, 0700h
+   mov     cx, 0               
+   mov     dx, 184fh		   
+   int     10h         
    
    call read_loader_codes
 
