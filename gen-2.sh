@@ -26,7 +26,9 @@ gcc -m32 -I lib/kernel/ -I lib/ -I kernel/ -c -fno-stack-protector -o build/inte
 
 gcc -m32 -I lib/kernel/ -I lib/ -I kernel/ -c -fno-stack-protector -o build/init.o kernel/init.c
 
+gcc -m32 -I lib/kernel/ -I lib/ -I kernel/ -c -fno-stack-protector -o build/debug.o kernel/debug.c
+
 ld -melf_i386  -Ttext 0xc0001500 -e main -o ./build/kernel/kernel.bin \
-    build/kernel/main.o build/kernel/print.o build/init.o build/interrupt.o build/kernel/kernel.o build/timer.o  \
+    build/kernel/main.o build/kernel/print.o build/init.o build/interrupt.o build/kernel/kernel.o build/timer.o build/debug.o  \
     && dd if=./build/kernel/kernel.bin of=./hd60.img bs=512 count=200 seek=9 conv=notrunc
 
