@@ -1,4 +1,4 @@
-  %include "const.inc"
+   %include "boot.inc"
    section loader vstart=LOADER_BASE_ADDR
 ;构建gdt及其内部的描述符
    GDT_BASE:   dd    0x00000000 
