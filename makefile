@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 BUILD_DIR = ./build
-DISK_IMG = hd60.img
+DISK_IMG = hd10.img
 ENTRY_POINT = 0xc0001500
 AS = nasm
 CC = gcc
