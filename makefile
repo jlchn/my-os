@@ -5,7 +5,7 @@ ENTRY_POINT = 0xc0001500
 AS = nasm
 CC = gcc
 LD = ld
-LIB = -I lib/ -I lib/kernel/ -I lib/user/ -I kernel/ -I device/
+LIB = -I lib/ -I lib/kernel/ -I lib/user/ -I kernel/ -I device/ -I thread/
 ASBINLIB = -I boot/include/
 ASFLAGS = -f elf
 CFLAGS = -m32  $(LIB) -c -fno-stack-protector
@@ -13,7 +13,7 @@ LDFLAGS = -melf_i386 -Ttext $(ENTRY_POINT) -e main
 OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/init.o $(BUILD_DIR)/interrupt.o \
       $(BUILD_DIR)/timer.o $(BUILD_DIR)/kernel.o $(BUILD_DIR)/print.o \
       $(BUILD_DIR)/debug.o $(BUILD_DIR)/string.o $(BUILD_DIR)/bitmap.o \
-	  $(BUILD_DIR)/memory.o
+	  $(BUILD_DIR)/memory.o $(BUILD_DIR)/thread.o
 
 
 $(BUILD_DIR)/mbr.bin: boot/mbr.S
@@ -59,6 +59,11 @@ $(BUILD_DIR)/memory.o: kernel/memory.c kernel/memory.h \
 		kernel/global.h lib/kernel/bitmap.h \
         lib/kernel/print.h lib/stdint.h kernel/interrupt.h kernel/debug.h lib/string.h
 	$(CC) $(CFLAGS) $< -o $@
+
+$(BUILD_DIR)/thread.o: thread/thread.c thread/thread.h lib/stdint.h \
+	    kernel/global.h lib/kernel/bitmap.h kernel/memory.h lib/string.h \
+		lib/stdint.h lib/kernel/print.h kernel/interrupt.h kernel/debug.h
+		$(CC) $(CFLAGS) $< -o $@
 
 $(BUILD_DIR)/kernel.bin: $(OBJS)
 	$(LD) $(LDFLAGS) $^ -o $@
