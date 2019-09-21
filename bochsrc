@@ -14,3 +14,4 @@ mouse: enabled=0
 keyboard: keymap=/usr/local/share/bochs/keymaps/sdl2-pc-us.map
 ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
 ata0-master: type=disk, path="hd60.img", mode=flat
+ata0-slave: type=disk, path="hdslave80.img", mode=flat
