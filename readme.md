@@ -30,6 +30,8 @@
 
 ### GDT（Global Descriptor Table)
 
+https://wiki.osdev.org/GDT
+
 GDT是描述符的数组，数组中每一项是8字节的描述符。可以用段选择子（segment selector）中提供的下标在GDT中查找描述符
 
 GDT位于内存中，需要用专门的寄存器保存GDT的地址，CPU才知道它在哪里。这个专门的寄存器是GDTR（GDT Register）。
