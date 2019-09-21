@@ -4,6 +4,7 @@
 #include "debug.h"
 #include "memory.h"
 #include "thread.h"
+#include "console.h"
 
 void k_thread_a(void *);
 void k_thread_b(void *);
@@ -26,13 +27,13 @@ int main()
     put_int((uint32_t)addr2);
     put_str("\n");
 
-    thread_start("k_thread_a", 31, k_thread_a, "argA");
+    thread_start("k_thread_a", 31, k_thread_a, "argA ");
     thread_start("k_thread_b", 8, k_thread_b, "argB ");
 
     intr_enable(); // 打开中断,使时钟中断起作用
     while (1)
     {
-        put_str("Main ");
+        console_put_str("Main ");
     };
     while (1)
     {
@@ -48,7 +49,7 @@ void k_thread_a(void *arg)
     char *para = arg;
     while (1)
     {
-        put_str(para);
+        console_put_str(para);
     }
 }
 
@@ -58,6 +59,6 @@ void k_thread_b(void *arg)
     char *para = arg;
     while (1)
     {
-        put_str(para);
+        console_put_str(para);
     }
 }
