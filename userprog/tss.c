@@ -70,7 +70,7 @@ void tss_init()
 
     /* 在gdt中添加dpl为0的TSS描述符 */
     *((struct gdt_desc *)0xc0000920) = make_gdt_desc((uint32_t *)&tss, tss_size - 1, TSS_ATTR_LOW, TSS_ATTR_HIGH);
-    put_str("2 start\n");
+
     /* 在gdt中添加dpl为3的数据段和代码段描述符 */
     *((struct gdt_desc *)0xc0000928) = make_gdt_desc((uint32_t *)0, 0xfffff, GDT_CODE_ATTR_LOW_DPL3, GDT_ATTR_HIGH);
     *((struct gdt_desc *)0xc0000930) = make_gdt_desc((uint32_t *)0, 0xfffff, GDT_DATA_ATTR_LOW_DPL3, GDT_ATTR_HIGH);
@@ -80,7 +80,6 @@ void tss_init()
     asm volatile("lgdt %0"
                  :
                  : "m"(gdt_operand));
-
     asm volatile("ltr %w0"
                  :
                  : "r"(SELECTOR_TSS));
